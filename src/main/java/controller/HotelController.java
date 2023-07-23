@@ -81,6 +81,9 @@ public class HotelController {
         return hotelService.getRoomsByStatus(status);
     }
 
+
+    // will work on it in future.
+
 //    @GetMapping("rooms/status/{status}/type/{type}")
 //    public List<HotelRoom> getRoomsByStatusAndType(@PathVariable Boolean status,@PathVariable Type type)
 //    {
