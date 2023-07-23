@@ -1,13 +1,13 @@
 package controller;
 
 import model.HotelM;
+import model.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import service.HotelService;
+
+import java.util.List;
 
 @RestController
 public class HotelController {
@@ -23,35 +23,35 @@ public class HotelController {
         return hotelService.newRoom(room);
     }
     // get particular room by id
-//    @GetMapping("room/{id}")
-//    public HotelRoom getRoomById(@PathVariable Integer id){
-//        return roomService.getRoomById(id);
-//    }
+    @GetMapping("room/{id}")
+    public HotelM getRoomById(@RequestParam Long id){
+        return hotelService.getRoomById(id);
+    }
 
     //check room is present or not in the database
-//    @GetMapping("room/{id}/exists")
-//    public boolean checkRoomExists(@PathVariable Integer id){
-//        return roomService.checkRoomExists(id);
-//    }
+    @GetMapping("room/{id}/exists")
+    public boolean checkRoomExists(@PathVariable Long id){
+        return hotelService.checkRoomExists(id);
+    }
 
 //    //get all the list of rooms by id
-//    @GetMapping("rooms/list")
-//    public Iterable<HotelRoom> getRoomsByIds(@RequestBody List<Integer> ids){
-//        return roomService.getRoomsByIds(ids);
-//    }
+    @GetMapping("rooms/list")
+    public Iterable<HotelM> getRoomsByIds(@RequestBody List<Long> ids){
+        return hotelService.getRoomsByIds(ids);
+    }
 
 
     // count total no. of rooms present
-//    @GetMapping("rooms/count")
-//    public Integer getTotalRooms(){
-//        return roomService.getTotalRooms();
-//    }
+    @GetMapping("rooms/count")
+    public Long getTotalRooms(){
+        return hotelService.getTotalRooms();
+    }
 
     // delete a room by id
-//    @DeleteMapping("room/{id}")
-//    public String deleteRoomById(@PathVariable Integer id){
-//        return roomService.deleteRoomById(id);
-//    }
+    @DeleteMapping("room/{id}")
+    public String deleteRoomById(@PathVariable Long id){
+        return hotelService.deleteRoomById(id);
+    }
 
     // delete a list of rooms by id
 
@@ -61,25 +61,25 @@ public class HotelController {
 
 
     //add a room of list
-//    @PostMapping("rooms")
-//    public String addRoom(@RequestBody List<HotelRoom> rooms){
-//        return roomService.addRoms(rooms);
-//    }
+    @PostMapping("rooms")
+    public String addRoom(@RequestBody List<HotelM> rooms){
+        return hotelService.addRoms(rooms);
+    }
 
     // update room type on the basis of roomId
-//    @PutMapping("room/{id}/{type}")
-//    public String updateRoomById(@PathVariable Integer id,@PathVariable Type type){
-//        return roomService.updateRoomById(id,type);
-//    }
+    @PutMapping("room/{id}/{type}")
+    public String updateRoomById(@PathVariable Long id,@PathVariable Type type){
+        return hotelService.updateRoomById(id,type);
+    }
 
 
     //find rooms by status
 
-//    @GetMapping("rooms/status/{status}")
-//    public List<HotelRoom> getRoomsByStatus(@PathVariable Boolean status)
-//    {
-//        return roomService.getRoomsByStatus(status);
-//    }
+    @GetMapping("rooms/status/{status}")
+    public List<HotelM> getRoomsByStatus(@PathVariable Boolean status)
+    {
+        return hotelService.getRoomsByStatus(status);
+    }
 
 //    @GetMapping("rooms/status/{status}/type/{type}")
 //    public List<HotelRoom> getRoomsByStatusAndType(@PathVariable Boolean status,@PathVariable Type type)
